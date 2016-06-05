@@ -81,6 +81,7 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	countdown_action_bonus_slider_(video),
 	name_entry_label_(video, _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
 	observers_game_(video, _("Observers"), gui::button::TYPE_CHECK),
+	registerd_users_only_(video, _("Registered users only"), gui::button::TYPE_CHECK),
 	oos_debug_(video, _("Debug OOS"), gui::button::TYPE_CHECK),
 	shuffle_sides_(video, _("Shuffle sides"), gui::button::TYPE_CHECK),
 	random_faction_mode_label_(video, _("Random factions:"), font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -570,7 +571,9 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos_left += 2 * border_size;
 	options_pane_left_.add_widget(&shuffle_sides_, xpos_left, ypos_left);
 	options_pane_left_.add_widget(&observers_game_,
-		xpos_left + options_pane_left_.width()  / 3 + border_size, ypos_left);
+		xpos_left + options_pane_left_.width() / 3 + border_size, ypos_left);
+	options_pane_left_.add_widget(&registerd_users_only_,
+		xpos_left + options_pane_left_.width() * 2/ 3 + border_size, ypos_left);
 	ypos_left += shuffle_sides_.height() + border_size;
 
 	options_pane_left_.add_widget(&random_faction_mode_label_, xpos_left, ypos_left);
