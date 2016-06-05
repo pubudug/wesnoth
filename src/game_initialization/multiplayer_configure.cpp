@@ -570,7 +570,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos_left += 2 * border_size;
 	options_pane_left_.add_widget(&shuffle_sides_, xpos_left, ypos_left);
 	options_pane_left_.add_widget(&observers_game_,
-		xpos_left + (options_pane_left_.width() - xpos_left) / 2 + border_size, ypos_left);
+		xpos_left + options_pane_left_.width()  / 3 + border_size, ypos_left);
 	ypos_left += shuffle_sides_.height() + border_size;
 
 	options_pane_left_.add_widget(&random_faction_mode_label_, xpos_left, ypos_left);
