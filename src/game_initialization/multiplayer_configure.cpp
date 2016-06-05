@@ -137,6 +137,9 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 	observers_game_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
+
+	registerd_users_only_.set_check(engine_.registered_users_only_default());
+	registerd_users_only_.set_help_string(_("Allow only registered users to play the game"));
 	registerd_users_only_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
 
 	oos_debug_.set_check(false);
@@ -266,7 +269,10 @@ configure::~configure()
 	// don't set observers preference if disabled (for singleplayer)
 	if (observers_game_.enabled())
 		preferences::set_allow_observers(engine_.allow_observers());
-
+	// don't set registerd_users_only preference if disabled (for singleplayer)
+	if (registerd_users_only_.enabled())
+		preferences::set_registered_users_only(engine_.registered_users_only());
+	
 	// When using map settings, the following variables are determined by the map,
 	// so don't store them as the new preferences.
 	if(!engine_.use_map_settings()) {
@@ -512,6 +518,7 @@ void configure::hide_children(bool hide)
 	name_entry_label_.hide(hide);
 
 	observers_game_.hide(hide);
+	registerd_users_only_.hide(hide);
 	oos_debug_.hide(hide);
 	shuffle_sides_.hide(hide);
 	random_faction_mode_label_.hide(hide);
