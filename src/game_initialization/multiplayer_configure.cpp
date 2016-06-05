@@ -137,6 +137,7 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	observers_game_.set_check(engine_.allow_observers_default());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 	observers_game_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
+	registerd_users_only_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
 
 	oos_debug_.set_check(false);
 	oos_debug_.set_help_string(_("More checks for OOS errors but also more network traffic"));
@@ -319,6 +320,7 @@ void configure::get_parameters()
 		engine_.write_parameters();
 	}
 	engine_.set_allow_observers(observers_game_.checked());
+	engine_.set_registered_users_only(registerd_users_only_.checked());
 	engine_.set_oos_debug(oos_debug_.checked());
 	engine_.set_shuffle_sides(shuffle_sides_.checked());
 	engine_.set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::from_int(random_faction_mode_.selected()));
