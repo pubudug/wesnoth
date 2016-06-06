@@ -139,7 +139,7 @@ configure::configure(CVideo& video, twesnothd_connection* wesnothd_connection, c
 	observers_game_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
 
 	registerd_users_only_.set_check(engine_.registered_users_only_default());
-	registerd_users_only_.set_help_string(_("Allow only registered users to play the game"));
+	registerd_users_only_.set_help_string(_("Allow only registered users to join the game"));
 	registerd_users_only_.enable(state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::SCENARIO);
 
 	oos_debug_.set_check(false);

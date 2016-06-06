@@ -134,6 +134,8 @@ Version 1.13.4+dev:
          aspect[recruitment_instructions].facet[facet_id].recruit[recruit_id].
          (For a limit, replace "recruit" with "limit".)
          The [recruit] and [limit] tags now support id keys for this.
+   * Added new attribute "registered_users_only" to MultiplayerServerWML which indicates
+     that only registered users should be allowed to join the game
  * Lua API:
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
@@ -214,6 +216,8 @@ Version 1.13.4+dev:
        parameter and returns true or false.
  * Multiplayer:
    * Hornshark Island: simplified multiplayer faction determination
+   * Added "Registered users only" checkbox to multiplayer configuration dialog which 
+     when checked, only allows registered users to join the game
  * Wesnoth formula engine:
    * Formulas in unit filters can now access nearly all unit attributes
      The following attributes were renamed (old names still work, for now):
